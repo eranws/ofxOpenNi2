@@ -1,9 +1,8 @@
 #pragma once
+class ofxNite2
+{
+public:
+	ofxNite2(void);
+	~ofxNite2(void);
+};
 
-#include "ofxOniDevice.h"
-#include "ofxDepthStream.h"
-#include "ofxColorStream.h"
-#include "ofxRecorder.h"
-
-#include "ofxHandTracker.h"
-#include "ofxUserTracker.h"
