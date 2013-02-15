@@ -18,7 +18,10 @@ void testApp::setup(){
 	{
 		try
 		{
-			oniDevice.setup("c:\\1.oni");
+
+			
+			system("dir");
+			oniDevice.setup(ofToDataPath("1.oni").c_str());
 		}
 		catch(exception e)
 		{
