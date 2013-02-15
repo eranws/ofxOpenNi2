@@ -2,12 +2,9 @@
 
 #include "ofMain.h"
 
-#include "..\ofxOniDevice.h"
-#include "..\ofxDepthStream.h"
-#include "..\ofxColorStream.h"
+#include "ofxOpenNi2.h"
 #include "ofxNiteUI.h"
 
-#define OFX_UI_NO_XML
 
 
 class testApp : public ofBaseApp{
@@ -27,6 +24,7 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+		ofxOpenNi2 _ofxOpenNi2;
 		ofxOniDevice oniDevice;
 		ofxDepthStream depthStream;
 		ofxColorStream colorStream;

@@ -20,8 +20,9 @@ void testApp::setup(){
 		{
 			oniDevice.setup("c:\\1.oni");
 		}
-		catch (exception e)
+		catch(exception e)
 		{
+			throw(e);
 		}
 	}
 
@@ -50,7 +51,7 @@ void testApp::draw(){
 	ofSetColor(255);
 
 	ofTexture colorTexture;
-	ofPixels colorPixels = colorStream.getPixels(); 
+	ofPixels colorPixels = *colorStream.getPixels(); 
 	colorTexture.allocate(colorPixels);
 	colorTexture.loadData(colorPixels);
 	colorTexture.draw(0,0);

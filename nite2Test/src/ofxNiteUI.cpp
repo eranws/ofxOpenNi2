@@ -1,5 +1,4 @@
 #include "ofxNiteUI.h"
-#include "ofxUICanvas.h"
 
 //--------------------------------------------------------------
 void ofxNiteUI::setup()

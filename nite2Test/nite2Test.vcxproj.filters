@@ -7,27 +7,39 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNite2\ofxColorStream.cpp">
-      <Filter>ofxNite2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNite2\ofxDepthStream.cpp">
-      <Filter>ofxNite2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNite2\ofxHandTracker.cpp">
-      <Filter>ofxNite2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNite2\ofxOniDevice.cpp">
-      <Filter>ofxNite2</Filter>
-    </ClCompile>
     <ClCompile Include="src\ofxNiteUI.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxHandTracker.cpp">
+      <Filter>ofxOpenNi2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxNite2.cpp">
+      <Filter>ofxOpenNi2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxOniDevice.cpp">
+      <Filter>ofxOpenNi2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxOpenNi2.cpp">
+      <Filter>ofxOpenNi2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxRecorder.cpp">
+      <Filter>ofxOpenNi2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxUserTracker.cpp">
+      <Filter>ofxOpenNi2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxColorStream.cpp">
+      <Filter>ofxOpenNi2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxDepthStream.cpp">
+      <Filter>ofxOpenNi2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ofxNite2">
+    <Filter Include="ofxOpenNi2">
       <UniqueIdentifier>{9a3398a9-ed6e-4301-b494-f8048f8a4b34}</UniqueIdentifier>
     </Filter>
     <Filter Include="ofxUI">
@@ -37,18 +49,6 @@
   <ItemGroup>
     <ClInclude Include="src\testApp.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNite2\ofxOniDevice.h">
-      <Filter>ofxNite2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNite2\ofxColorStream.h">
-      <Filter>ofxNite2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNite2\ofxDepthStream.h">
-      <Filter>ofxNite2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNite2\ofxHandTracker.h">
-      <Filter>ofxNite2</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI.h">
       <Filter>ofxUI</Filter>
@@ -175,6 +175,30 @@
     </ClInclude>
     <ClInclude Include="src\ofxNiteUI.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxHandTracker.h">
+      <Filter>ofxOpenNi2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxNite2.h">
+      <Filter>ofxOpenNi2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxOniDevice.h">
+      <Filter>ofxOpenNi2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxOpenNi2.h">
+      <Filter>ofxOpenNi2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxRecorder.h">
+      <Filter>ofxOpenNi2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxUserTracker.h">
+      <Filter>ofxOpenNi2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxColorStream.h">
+      <Filter>ofxOpenNi2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxDepthStream.h">
+      <Filter>ofxOpenNi2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

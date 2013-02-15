@@ -58,7 +58,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxNite2\libs;..\..\..\addons\ofxNite2\src;..\..\..\addons\ofxUI\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxOpenNi2\libs;..\..\..\addons\ofxOpenNi2\src;..\..\..\addons\ofxUI\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -84,7 +84,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat />
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxNite2\libs;..\..\..\addons\ofxNite2\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxOpenNi2\libs;..\..\..\addons\ofxOpenNi2\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -105,19 +105,19 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\addons\ofxNite2\ofxColorStream.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNite2\ofxDepthStream.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNite2\ofxHandTracker.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNite2\ofxOniDevice.cpp" />
+    <ClCompile Include="..\src\ofxColorStream.cpp" />
+    <ClCompile Include="..\src\ofxDepthStream.cpp" />
+    <ClCompile Include="..\src\ofxHandTracker.cpp" />
+    <ClCompile Include="..\src\ofxNite2.cpp" />
+    <ClCompile Include="..\src\ofxOniDevice.cpp" />
+    <ClCompile Include="..\src\ofxOpenNi2.cpp" />
+    <ClCompile Include="..\src\ofxRecorder.cpp" />
+    <ClCompile Include="..\src\ofxUserTracker.cpp" />
     <ClCompile Include="src\ofxNiteUI.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\addons\ofxNite2\ofxColorStream.h" />
-    <ClInclude Include="..\..\..\addons\ofxNite2\ofxDepthStream.h" />
-    <ClInclude Include="..\..\..\addons\ofxNite2\ofxHandTracker.h" />
-    <ClInclude Include="..\..\..\addons\ofxNite2\ofxOniDevice.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUI2DPad.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIBaseDraws.h" />
@@ -159,6 +159,14 @@
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWaveform.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidget.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.h" />
+    <ClInclude Include="..\src\ofxColorStream.h" />
+    <ClInclude Include="..\src\ofxDepthStream.h" />
+    <ClInclude Include="..\src\ofxHandTracker.h" />
+    <ClInclude Include="..\src\ofxNite2.h" />
+    <ClInclude Include="..\src\ofxOniDevice.h" />
+    <ClInclude Include="..\src\ofxOpenNi2.h" />
+    <ClInclude Include="..\src\ofxRecorder.h" />
+    <ClInclude Include="..\src\ofxUserTracker.h" />
     <ClInclude Include="src\ofxNiteUI.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
