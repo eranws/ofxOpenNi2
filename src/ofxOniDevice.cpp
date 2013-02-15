@@ -24,8 +24,14 @@ void ofxOniDevice::exit()
 
 void ofxOniDevice::setRegistration( bool b )
 {
-	device->isImageRegistrationModeSupported(openni::IMAGE_REGISTRATION_DEPTH_TO_COLOR);
-	device->setImageRegistrationMode(openni::IMAGE_REGISTRATION_DEPTH_TO_COLOR);
+	if(device->isImageRegistrationModeSupported(openni::IMAGE_REGISTRATION_DEPTH_TO_COLOR))
+	{
+		device->setImageRegistrationMode(openni::IMAGE_REGISTRATION_DEPTH_TO_COLOR);
+	}
+	else
+	{
+		ofLogWarning() << "Image Registration Unsupported";
+	}
 	
 }
 
