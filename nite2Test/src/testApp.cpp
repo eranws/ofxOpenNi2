@@ -34,11 +34,6 @@ void testApp::setup(){
 
 	oniDevice.setRegistration(true);
 
-	//handTracker.setup(depthStream.getDevice());
-
-	niteUI.setup();
-
-
 }
 
 //--------------------------------------------------------------
@@ -48,8 +43,6 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
-	niteUI.draw();
 
 	ofSetColor(255);
 
@@ -90,13 +83,10 @@ void testApp::draw(){
 
 	ofSetColor(255);
 	colorTexture.draw(0,0);
-
-
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	niteUI.keyPressed(key);
 }
 
 //--------------------------------------------------------------

@@ -7,15 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\ofxNiteUI.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ofxHandTracker.cpp">
-      <Filter>ofxOpenNi2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ofxNite2.cpp">
-      <Filter>ofxOpenNi2</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\ofxOniDevice.cpp">
       <Filter>ofxOpenNi2</Filter>
     </ClCompile>
@@ -23,9 +14,6 @@
       <Filter>ofxOpenNi2</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ofxRecorder.cpp">
-      <Filter>ofxOpenNi2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ofxUserTracker.cpp">
       <Filter>ofxOpenNi2</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ofxColorStream.cpp">
@@ -173,15 +161,6 @@
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.h">
       <Filter>ofxUI</Filter>
     </ClInclude>
-    <ClInclude Include="src\ofxNiteUI.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ofxHandTracker.h">
-      <Filter>ofxOpenNi2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ofxNite2.h">
-      <Filter>ofxOpenNi2</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\ofxOniDevice.h">
       <Filter>ofxOpenNi2</Filter>
     </ClInclude>
@@ -189,9 +168,6 @@
       <Filter>ofxOpenNi2</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ofxRecorder.h">
-      <Filter>ofxOpenNi2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ofxUserTracker.h">
       <Filter>ofxOpenNi2</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ofxColorStream.h">

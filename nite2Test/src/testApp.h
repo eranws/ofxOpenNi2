@@ -1,11 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-
 #include "ofxOpenNi2.h"
-#include "ofxNiteUI.h"
-
-
 
 class testApp : public ofBaseApp{
 
@@ -28,7 +24,5 @@ class testApp : public ofBaseApp{
 		ofxOniDevice oniDevice;
 		ofxDepthStream depthStream;
 		ofxColorStream colorStream;
-
-		ofxNiteUI niteUI;
 
 };

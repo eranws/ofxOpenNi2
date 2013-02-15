@@ -107,13 +107,9 @@
   <ItemGroup>
     <ClCompile Include="..\src\ofxColorStream.cpp" />
     <ClCompile Include="..\src\ofxDepthStream.cpp" />
-    <ClCompile Include="..\src\ofxHandTracker.cpp" />
-    <ClCompile Include="..\src\ofxNite2.cpp" />
     <ClCompile Include="..\src\ofxOniDevice.cpp" />
     <ClCompile Include="..\src\ofxOpenNi2.cpp" />
     <ClCompile Include="..\src\ofxRecorder.cpp" />
-    <ClCompile Include="..\src\ofxUserTracker.cpp" />
-    <ClCompile Include="src\ofxNiteUI.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
@@ -161,13 +157,9 @@
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.h" />
     <ClInclude Include="..\src\ofxColorStream.h" />
     <ClInclude Include="..\src\ofxDepthStream.h" />
-    <ClInclude Include="..\src\ofxHandTracker.h" />
-    <ClInclude Include="..\src\ofxNite2.h" />
     <ClInclude Include="..\src\ofxOniDevice.h" />
     <ClInclude Include="..\src\ofxOpenNi2.h" />
     <ClInclude Include="..\src\ofxRecorder.h" />
-    <ClInclude Include="..\src\ofxUserTracker.h" />
-    <ClInclude Include="src\ofxNiteUI.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>
