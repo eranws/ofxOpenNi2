@@ -10,6 +10,9 @@ void testApp::setup(){
 	// name
 	// list<Args>
 
+	_ofxOpenNi2.oniDevice.setup();
+	_ofxOpenNi2.oniDevice.depthStream.startThread(false);
+	_ofxOpenNi2.oniDevice.colorStream.startThread(false);
 }
 
 //--------------------------------------------------------------
@@ -20,6 +23,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	ofSetColor(255);
+	_ofxOpenNi2.draw();
 }
 
 //--------------------------------------------------------------
