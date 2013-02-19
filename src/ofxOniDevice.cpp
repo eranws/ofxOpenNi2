@@ -15,6 +15,8 @@ void ofxOniDevice::setup(const char* uri)
 		throw std::exception(OpenNI::getExtendedError());
 	}
 
+	depthStream.setup(device);
+	colorStream.setup(device);
 }
 
 void ofxOniDevice::exit()

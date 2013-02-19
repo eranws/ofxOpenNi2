@@ -1,8 +1,7 @@
 #pragma once
 
 #include "ofxOniDevice.h"
-#include "ofxDepthStream.h"
-#include "ofxColorStream.h"
+
 #include "ofxRecorder.h"
 
 class ofxOpenNi2
@@ -15,8 +14,5 @@ public:
 	void draw();
 
 	ofxOniDevice oniDevice;
-	ofxDepthStream depthStream;
-	ofxColorStream colorStream;
-
 };
 

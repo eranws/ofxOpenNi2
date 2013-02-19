@@ -128,9 +128,6 @@ void ofxOpenNi2::setup()
 		}
 	}
 
-	depthStream.setup(oniDevice.getDevice());
-	colorStream.setup(oniDevice.getDevice());
-
 	oniDevice.setRegistration(true);
 
 }
@@ -138,14 +135,14 @@ void ofxOpenNi2::setup()
 void ofxOpenNi2::draw()
 {
 	ofTexture colorTexture;
-	ofPixels colorPixels = *colorStream.getPixels(); 
+	ofPixels colorPixels = *oniDevice.colorStream.getPixels(); 
 	colorTexture.allocate(colorPixels);
 	colorTexture.loadData(colorPixels);
 	colorTexture.draw(0,0);
 
 	ofTexture depthTexture;
 
-	ofPtr<ofShortPixels> depthRawPixels = depthStream.getPixels();
+	ofPtr<ofShortPixels> depthRawPixels = oniDevice.depthStream.getPixels();
 
 	ofPixels depthPixels;
 	depthPixels.allocate(depthRawPixels->getWidth(), depthRawPixels->getHeight(), OF_PIXELS_RGBA);
