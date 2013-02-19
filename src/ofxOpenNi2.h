@@ -12,6 +12,7 @@ public:
 	~ofxOpenNi2(void);
 
 	void setup();
+	void draw();
 
 	ofxOniDevice oniDevice;
 	ofxDepthStream depthStream;
