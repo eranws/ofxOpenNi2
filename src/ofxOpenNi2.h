@@ -11,8 +11,14 @@ public:
 	~ofxOpenNi2(void);
 
 	void setup();
+	void update();
 	void draw();
 
-	ofxOniDevice oniDevice;
+	typedef map<const std::string, ofPtr<ofxOniDevice>> DeviceMap;
+
+	DeviceMap devices;
+
+	friend class ofxOpenNi2Listener;
+		//		oniDevice;
 };
 

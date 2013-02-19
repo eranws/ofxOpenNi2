@@ -27,7 +27,6 @@ public:
 protected:
 	ofPtr<ofPixels> pixels[2];
 	
-	virtual void threadedFunction();
 	void allocateBuffers();
 	ofPtr<openni::Device> device;
 	ofPtr<openni::VideoStream> stream;

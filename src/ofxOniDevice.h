@@ -15,6 +15,8 @@ class ofxOniDevice
 public:
 
 	void setup(const char* uri = NULL);
+	void update();
+	void draw();
 	void exit();
 
 	bool isValid();
@@ -29,6 +31,5 @@ public:
 
 protected:
 	ofPtr<openni::Device> device;
-
 };
 

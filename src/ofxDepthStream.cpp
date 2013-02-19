@@ -32,20 +32,10 @@ void ofxDepthStream::setup(ofPtr<openni::Device> device, bool isVerbose)
 
 void ofxDepthStream::exit()
 {
-	stopThread();
-	waitForThread();
 	stream->stop();
 	stream->destroy();
-
 }
 
-void ofxDepthStream::threadedFunction()
-{
-	while (isThreadRunning())
-	{
-		readFrame();
-	}
-}
 
 ofVec3f ofxDepthStream::cameraToWorld(ofVec2f p)
 {
