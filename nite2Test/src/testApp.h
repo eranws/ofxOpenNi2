@@ -21,8 +21,4 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		ofxOpenNi2 _ofxOpenNi2;
-		ofxOniDevice oniDevice;
-		ofxDepthStream depthStream;
-		ofxColorStream colorStream;
-
 };

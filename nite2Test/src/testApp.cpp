@@ -10,30 +10,6 @@ void testApp::setup(){
 	// name
 	// list<Args>
 
-	try
-	{
-		oniDevice.setup();
-	}
-	catch (exception e)
-	{
-		try
-		{
-
-			
-			system("dir");
-			oniDevice.setup(ofToDataPath("1.oni").c_str());
-		}
-		catch(exception e)
-		{
-			throw(e);
-		}
-	}
-
-	depthStream.setup(oniDevice.getDevice());
-	colorStream.setup(oniDevice.getDevice());
-
-	oniDevice.setRegistration(true);
-
 }
 
 //--------------------------------------------------------------
@@ -45,7 +21,7 @@ void testApp::update(){
 void testApp::draw(){
 
 	ofSetColor(255);
-
+	/*
 	ofTexture colorTexture;
 	ofPixels colorPixels = *colorStream.getPixels(); 
 	colorTexture.allocate(colorPixels);
@@ -83,6 +59,7 @@ void testApp::draw(){
 
 	ofSetColor(255);
 	colorTexture.draw(0,0);
+	*/
 }
 
 //--------------------------------------------------------------

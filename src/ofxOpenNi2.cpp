@@ -106,3 +106,31 @@ ofxOpenNi2::~ofxOpenNi2(void)
 {
 	openni::OpenNI::shutdown();
 }
+
+void ofxOpenNi2::setup()
+{
+	try
+	{
+		oniDevice.setup();
+	}
+	catch (exception e)
+	{
+		try
+		{
+
+			
+			system("dir");
+			oniDevice.setup(ofToDataPath("1.oni").c_str());
+		}
+		catch(exception e)
+		{
+			throw(e);
+		}
+	}
+
+	depthStream.setup(oniDevice.getDevice());
+	colorStream.setup(oniDevice.getDevice());
+
+	oniDevice.setRegistration(true);
+
+}
