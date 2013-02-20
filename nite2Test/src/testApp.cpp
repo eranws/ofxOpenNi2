@@ -10,18 +10,19 @@ void testApp::setup(){
 	// name
 	// list<Args>
 
-	_ofxOpenNi2.setup();
+	ofxNi::Server::setup();
 }
+
 
 //--------------------------------------------------------------
 void testApp::update(){
-	_ofxOpenNi2.update();
+	ofxNi::Server::update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 	ofSetColor(255);
-	_ofxOpenNi2.draw();
+	ofxNi::Server::draw();
 }
 
 //--------------------------------------------------------------

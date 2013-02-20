@@ -2,23 +2,34 @@
 
 #include "ofxOniDevice.h"
 
-#include "ofxRecorder.h"
-
-class ofxOpenNi2
+namespace ofxNi
 {
-public:
-	ofxOpenNi2(void);
-	~ofxOpenNi2(void);
-
-	void setup();
-	void update();
-	void draw();
-
 	typedef map<const std::string, ofPtr<ofxOniDevice>> DeviceMap;
 
-	DeviceMap devices;
+	struct ServerOptions
+	{
+		//bool threaded
+		//bool init all
+	};
 
-	friend class ofxOpenNi2Listener;
-		//		oniDevice;
+	class Server
+	{
+	public:
+		static void setup(ServerOptions = defaultOptions);
+		static void update();
+		static void draw();
+
+
+		static ofPtr<ofxOniDevice> open(std::string uri);
+		
+		static DeviceMap devices;
+		static ServerOptions defaultOptions;
+
+		~Server();
+	private:
+		Server(void);
+		Server(const Server&);
+		Server&operator=(const Server &);
+	};
+
 };
-
