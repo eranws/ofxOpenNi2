@@ -1,6 +1,5 @@
 #include "ofxColorStream.h"
 #include "OpenNI.h"
-#include "ofTexture.h"
 
 
 void ofxColorStream::setup(ofPtr<openni::Device> device, bool isVerbose)
@@ -46,8 +45,10 @@ void ofxColorStream::allocateBuffers()
 	{
 		pixels[i] = ofPtr<ofPixels>(new ofPixels);
 		pixels[i]->allocate(w, h, OF_IMAGE_COLOR);
+		
+		textures[i] = ofPtr<ofTexture>(new ofTexture);
+		textures[i]->allocate(*pixels[i]);
 	}
-//	texture.allocate(w, h, GL_RGB);
 }
 
 bool ofxColorStream::isValid()
@@ -65,30 +66,22 @@ int ofxColorStream::readFrame()
 		return rc;
 	}
 
-	if (frame.getVideoMode().getPixelFormat() != openni::PIXEL_FORMAT_RGB888)
-	{
-		printf("Unexpected frame format\n");
-		return rc;
-	}
-
-	openni::RGB888Pixel* pcolor = (openni::RGB888Pixel*)frame.getData();
-	int middleIndex = (frame.getHeight()+1)*frame.getWidth()/2;
-
+	//openni::RGB888Pixel* pcolor = (openni::RGB888Pixel*)frame.getData();
+	//int middleIndex = (frame.getHeight()+1)*frame.getWidth()/2;
 	//printf("[%08llu] %8d fps:%d\n", (long long)frame.getTimestamp(), pcolor[middleIndex].r, stream->getVideoMode().getFps());
 
 	pixels[1]->setFromPixels((const unsigned char*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_COLOR);
+	textures[1]->loadData(*pixels[1]);
+
 	swap(pixels[0], pixels[1]);
+	swap(textures[0], textures[1]);
 
 	return openni::STATUS_OK;
 }
 
 void ofxColorStream::draw()
 {
-	ofTexture colorTexture; 
-	ofPtr<ofPixels> colorPixels = getPixels(); 
-	colorTexture.allocate(*colorPixels);
-	colorTexture.loadData(*colorPixels);
-	colorTexture.draw(0,0);
+	getTexture()->draw(0,0);
 }
 
 

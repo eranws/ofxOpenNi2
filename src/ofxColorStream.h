@@ -1,6 +1,7 @@
 #pragma once
 #include "ofThread.h"
 #include "ofPixels.h"
+#include "ofTexture.h"
 
 namespace openni
 {
@@ -24,9 +25,11 @@ public:
 	bool isValid();
 
 	ofPtr<ofPixels> getPixels() const { return pixels[0]; }
+	ofPtr<ofTexture> getTexture() const { return textures[0]; }
 
 protected:
 	ofPtr<ofPixels> pixels[2];
+	ofPtr<ofTexture> textures[2];
 	
 	void allocateBuffers();
 	ofPtr<openni::Device> device;

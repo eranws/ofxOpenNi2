@@ -61,6 +61,9 @@ void ofxDepthStream::allocateBuffers()
 	{
 		pixels[i] = ofPtr<ofShortPixels>(new ofShortPixels);
 		pixels[i]->allocate(w, h, OF_IMAGE_GRAYSCALE);
+
+		textures[i] = ofPtr<ofTexture>(new ofTexture);
+		textures[i]->allocate(*pixels[i]);
 	}
 	
 }
@@ -92,23 +95,24 @@ int ofxDepthStream::readFrame()
 	//printf("[%08llu] %8d fps:%d\n", (long long)frame.getTimestamp(), pDepth[middleIndex], stream->getVideoMode().getFps());
 
 	pixels[1]->setFromPixels((const unsigned short*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_GRAYSCALE);
+	textures[1]->loadData(*pixels[1]);
+
 	swap(pixels[0], pixels[1]);
+	swap(textures[0], textures[1]);
 
 	return openni::STATUS_OK;
 }
 
-void ofxDepthStream::draw()
+ofTexture depthTextureToColor(const ofShortPixels& raw)
 {
 	ofTexture depthTexture;
 
-	ofPtr<ofShortPixels> depthRawPixels = getPixels();
-
 	ofPixels depthPixels;
-	depthPixels.allocate(depthRawPixels->getWidth(), depthRawPixels->getHeight(), OF_PIXELS_RGBA);
+	depthPixels.allocate(raw.getWidth(), raw.getHeight(), OF_PIXELS_RGBA);
 
-	const unsigned short* prd = depthRawPixels->getPixels();
+	const unsigned short* prd = raw.getPixels();
 	unsigned char* pd = depthPixels.getPixels();
-	for (int i = 0; i < depthRawPixels->size(); i++)
+	for (int i = 0; i < raw.size(); i++)
 	{
 		const short minDepth = 450;
 		short s = prd[i];
@@ -122,6 +126,15 @@ void ofxDepthStream::draw()
 
 	depthTexture.allocate(depthPixels);
 	depthTexture.loadData(depthPixels);
+
+	return depthTexture;
 }
 
+
+void ofxDepthStream::draw()
+{
+	ofPtr<ofShortPixels> depthRawPixels = getPixels();
+	ofTexture depthTexture = depthTextureToColor(*depthRawPixels);
+	depthTexture.draw(0, 0);
+}
 

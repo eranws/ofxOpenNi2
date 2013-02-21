@@ -52,6 +52,7 @@ void ofxOniDevice::setStreamSync( bool b )
 void ofxOniDevice::draw()
 {
 	depthStream.draw();
+	ofTranslate(depthStream.getPixels()->getWidth(), 0);
 	colorStream.draw();
 }
 

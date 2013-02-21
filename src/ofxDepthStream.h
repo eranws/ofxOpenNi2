@@ -22,12 +22,15 @@ public:
 	bool isValid();
 
 	ofPtr<ofShortPixels> getPixels() const { return pixels[0]; }
+	ofPtr<ofTexture> getTexture() const { return textures[0]; }
+
 	int readFrame();
 
 	ofVec3f cameraToWorld(ofVec2f p); //Depth Camera?
 
 protected:
 	ofPtr<ofShortPixels> pixels[2];
+	ofPtr<ofTexture> textures[2];
 
 
 	void allocateBuffers();
