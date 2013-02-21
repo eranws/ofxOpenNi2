@@ -10,6 +10,7 @@ namespace ofxNi
 	{
 		//bool threaded
 		//bool init all
+		//bool noThrow
 	};
 
 	class Server

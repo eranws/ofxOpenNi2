@@ -9,6 +9,7 @@ namespace ofxNi
 {
 	ServerOptions Server::defaultOptions;
 	DeviceMap Server::devices;
+	ofPtr<Server> instance;
 
 	
 	string toString(Server o)
@@ -89,8 +90,6 @@ namespace ofxNi
 	{
 		Version v = OpenNI::getVersion();
 		ofLog() << "OpenNI Version: " << toString(v);
-
-		
 	}
 
 
@@ -101,11 +100,15 @@ namespace ofxNi
 
 	void Server::setup(ServerOptions options)
 	{
+		if (instance.use_count() > 0) return;
+
+		instance = ofPtr<Server>(new Server());
+
 		openni::Status rc = openni::OpenNI::initialize();
 		if (rc != ONI_STATUS_OK)
 		{
 			ofLogError() << openni::OpenNI::getExtendedError();
-			//throw ("Initialize failed\n%s\n", openni::OpenNI::getExtendedError());
+			throw ("Initialize failed\n%s\n", openni::OpenNI::getExtendedError());
 		}
 
 		Array<DeviceInfo> deviceInfoList;
