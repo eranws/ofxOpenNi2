@@ -97,4 +97,31 @@ int ofxDepthStream::readFrame()
 	return openni::STATUS_OK;
 }
 
+void ofxDepthStream::draw()
+{
+	ofTexture depthTexture;
+
+	ofPtr<ofShortPixels> depthRawPixels = getPixels();
+
+	ofPixels depthPixels;
+	depthPixels.allocate(depthRawPixels->getWidth(), depthRawPixels->getHeight(), OF_PIXELS_RGBA);
+
+	const unsigned short* prd = depthRawPixels->getPixels();
+	unsigned char* pd = depthPixels.getPixels();
+	for (int i = 0; i < depthRawPixels->size(); i++)
+	{
+		const short minDepth = 450;
+		short s = prd[i];
+		char x = (s < minDepth) ? 0 : powf(s - minDepth, 0.7f);
+		pd[4 * i + 0] = 255 - x;
+		pd[4 * i + 1] = 255 - x;
+		pd[4 * i + 2] = 255 - x;
+		pd[4 * i + 3] = x;
+
+	}
+
+	depthTexture.allocate(depthPixels);
+	depthTexture.loadData(depthPixels);
+}
+
 

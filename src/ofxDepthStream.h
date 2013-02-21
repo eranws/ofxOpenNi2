@@ -14,7 +14,7 @@ class ofxDepthStream
 public:
 
 	void setup(ofPtr<openni::Device> device = ofPtr<openni::Device>(), bool isVerbose = false);
-
+	void draw();
 	void exit();
 
 	ofPtr<openni::Device> getDevice() const { return device; }
@@ -31,7 +31,6 @@ protected:
 
 
 	void allocateBuffers();
-
 	ofPtr<openni::Device> device;
 	ofPtr<openni::VideoStream> stream;
 	

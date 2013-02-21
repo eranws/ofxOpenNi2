@@ -1,5 +1,6 @@
 #include "ofxColorStream.h"
 #include "OpenNI.h"
+#include "ofTexture.h"
 
 
 void ofxColorStream::setup(ofPtr<openni::Device> device, bool isVerbose)
@@ -79,6 +80,15 @@ int ofxColorStream::readFrame()
 	swap(pixels[0], pixels[1]);
 
 	return openni::STATUS_OK;
+}
+
+void ofxColorStream::draw()
+{
+	ofTexture colorTexture; 
+	ofPtr<ofPixels> colorPixels = getPixels(); 
+	colorTexture.allocate(*colorPixels);
+	colorTexture.loadData(*colorPixels);
+	colorTexture.draw(0,0);
 }
 
 
