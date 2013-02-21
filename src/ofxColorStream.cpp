@@ -32,8 +32,19 @@ void ofxColorStream::setup(ofPtr<openni::Device> device, bool isVerbose)
 
 void ofxColorStream ::exit()
 {
+	stopThread();
+	waitForThread();
+
 	stream->stop();
 	stream->destroy();
+}
+
+void ofxColorStream ::threadedFunction()
+{
+	while (isThreadRunning())
+	{
+		readFrame();
+	}
 }
 
 void ofxColorStream::allocateBuffers()

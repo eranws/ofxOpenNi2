@@ -8,7 +8,7 @@ namespace openni
 	class VideoStream;
 }
 
-class ofxDepthStream
+class ofxDepthStream : public ofThread
 {
 
 public:
@@ -31,6 +31,8 @@ public:
 protected:
 	ofPtr<ofShortPixels> pixels[2];
 	ofPtr<ofTexture> textures[2];
+
+	virtual void threadedFunction();
 
 
 	void allocateBuffers();

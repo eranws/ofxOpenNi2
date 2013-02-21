@@ -31,6 +31,7 @@ protected:
 	ofPtr<ofPixels> pixels[2];
 	ofPtr<ofTexture> textures[2];
 	
+	virtual void threadedFunction();
 	void allocateBuffers();
 	ofPtr<openni::Device> device;
 	ofPtr<openni::VideoStream> stream;
