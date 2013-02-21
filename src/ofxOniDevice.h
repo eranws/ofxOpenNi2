@@ -15,7 +15,6 @@ class ofxOniDevice
 public:
 
 	void setup(const char* uri = NULL);
-	void update();
 	void draw();
 	void exit();
 
@@ -26,6 +25,7 @@ public:
 	void setRegistration( bool b ); //TODO: access via settings object
 	void setStreamSync( bool b );
 
+	//TODO: SensorMap, template/inheritance
 	ofxDepthStream depthStream;
 	ofxColorStream colorStream;
 

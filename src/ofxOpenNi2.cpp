@@ -132,13 +132,6 @@ namespace ofxNi
 		}
 	}
 
-	void Server::update()
-	{
-		for(DeviceMap::iterator it = devices.begin(); it != devices.end(); it++)
-		{
-			it->second->update();
-		}
-	}
 
 	void Server::draw()
 	{

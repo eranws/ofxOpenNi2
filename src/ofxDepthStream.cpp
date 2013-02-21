@@ -26,17 +26,15 @@ void ofxDepthStream::setup(ofPtr<openni::Device> device, bool isVerbose)
 		throw ("Couldn't start the depth stream\n%s\n", openni::OpenNI::getExtendedError());
 
 	}
-
-	//startThread(false, isVerbose);
 }
 
 void ofxDepthStream::exit()
 {
 	stopThread();
 	waitForThread();
+
 	stream->stop();
 	stream->destroy();
-
 }
 
 void ofxDepthStream::threadedFunction()
@@ -72,8 +70,7 @@ void ofxDepthStream::allocateBuffers()
 		pixels[i] = ofPtr<ofShortPixels>(new ofShortPixels);
 		pixels[i]->allocate(w, h, OF_IMAGE_GRAYSCALE);
 
-		textures[i] = ofPtr<ofTexture>(new ofTexture);
-		textures[i]->allocate(*pixels[i]);
+		texture.allocate(*pixels[i]);
 	}
 	
 }
@@ -100,15 +97,13 @@ int ofxDepthStream::readFrame()
 		return rc;
 	}
 
-	openni::DepthPixel* pDepth = (openni::DepthPixel*)frame.getData();
+	//openni::DepthPixel* pDepth = (openni::DepthPixel*)frame.getData();
 	//int middleIndex = (frame.getHeight()+1)*frame.getWidth()/2;
 	//printf("[%08llu] %8d fps:%d\n", (long long)frame.getTimestamp(), pDepth[middleIndex], stream->getVideoMode().getFps());
 
 	pixels[1]->setFromPixels((const unsigned short*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_GRAYSCALE);
-	textures[1]->loadData(*pixels[1]);
 
 	swap(pixels[0], pixels[1]);
-	swap(textures[0], textures[1]);
 
 	return openni::STATUS_OK;
 }
@@ -144,7 +139,7 @@ ofTexture depthTextureToColor(const ofShortPixels& raw)
 void ofxDepthStream::draw()
 {
 	ofPtr<ofShortPixels> depthRawPixels = getPixels();
-	ofTexture depthTexture = depthTextureToColor(*depthRawPixels);
-	depthTexture.draw(0, 0);
+	texture = depthTextureToColor(*depthRawPixels);
+	texture.draw(0, 0);
 }
 

@@ -26,11 +26,9 @@ void ofxColorStream::setup(ofPtr<openni::Device> device, bool isVerbose)
 		throw ("Couldn't start the color stream\n%s\n", openni::OpenNI::getExtendedError());
 
 	}
-
-	//startThread(false, isVerbose);
 }
 
-void ofxColorStream ::exit()
+void ofxColorStream::exit()
 {
 	stopThread();
 	waitForThread();
@@ -57,8 +55,7 @@ void ofxColorStream::allocateBuffers()
 		pixels[i] = ofPtr<ofPixels>(new ofPixels);
 		pixels[i]->allocate(w, h, OF_IMAGE_COLOR);
 		
-		textures[i] = ofPtr<ofTexture>(new ofTexture);
-		textures[i]->allocate(*pixels[i]);
+		texture.allocate(*pixels[i]);
 	}
 }
 
@@ -82,17 +79,15 @@ int ofxColorStream::readFrame()
 	//printf("[%08llu] %8d fps:%d\n", (long long)frame.getTimestamp(), pcolor[middleIndex].r, stream->getVideoMode().getFps());
 
 	pixels[1]->setFromPixels((const unsigned char*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_COLOR);
-	textures[1]->loadData(*pixels[1]);
 
 	swap(pixels[0], pixels[1]);
-	swap(textures[0], textures[1]);
-
 	return openni::STATUS_OK;
 }
 
 void ofxColorStream::draw()
 {
-	getTexture()->draw(0,0);
+	texture.loadData(*pixels[1]);
+	texture.draw(0,0);
 }
 
 

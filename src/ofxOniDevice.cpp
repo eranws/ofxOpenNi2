@@ -14,15 +14,21 @@ void ofxOniDevice::setup(const char* uri)
 		throw std::exception(OpenNI::getExtendedError());
 	}
 
+	//TODO: setup here. (query for devices)
 	depthStream.setup(device);
 	colorStream.setup(device);
 
 	//isFile ? don't start
-	//startThread(false);
+
+	depthStream.startThread(false);
+	colorStream.startThread(false);
 }
 
 void ofxOniDevice::exit()
 {
+	//TODO: Dtor
+	depthStream.exit();
+	colorStream.exit();
 	device->close();
 }
 
@@ -54,11 +60,5 @@ void ofxOniDevice::draw()
 	depthStream.draw();
 	ofTranslate(depthStream.getPixels()->getWidth(), 0);
 	colorStream.draw();
-}
-
-void ofxOniDevice::update()
-{
-	depthStream.readFrame(); //update?
-	colorStream.readFrame(); //update?
 }
 

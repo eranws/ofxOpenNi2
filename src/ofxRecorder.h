@@ -1,5 +1,4 @@
 #pragma once
-#include "ofThread.h"
 #include "ofPixels.h"
 #include <vector>
 
@@ -10,7 +9,7 @@ namespace openni
 	class Recorder;
 }
 
-class ofxRecorder : public ofThread
+class ofxRecorder
 {
 
 public:
