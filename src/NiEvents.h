@@ -34,6 +34,8 @@ class NiEvents{
 public:
 	ofEvent<TrackedPoint> handUpdate;
 	ofEvent<ofPtr<ofShortPixels> > onDepthFrame;
+	ofEvent<ofPtr<ofPixels> > onColorFrame;
+
 	//TODO: more events here...
 };
 
@@ -41,7 +43,7 @@ NiEvents& getNiEvents();
 
 
 template<class ListenerClass>
-void registerHandJockeyEvents(ListenerClass * listener){
+void registerHandEvents(ListenerClass * listener){
 	ofAddListener(getNiEvents().handUpdate, listener, &ListenerClass::handUpdate);
 }
 

@@ -1,5 +1,6 @@
 #include "ofxColorStream.h"
 #include "OpenNI.h"
+#include "NiEvents.h"
 
 
 void ofxColorStream::setup(ofPtr<openni::Device> device, bool isVerbose)
@@ -81,12 +82,16 @@ int ofxColorStream::readFrame()
 	pixels[1]->setFromPixels((const unsigned char*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_COLOR);
 
 	swap(pixels[0], pixels[1]);
+
+	
+	ofNotifyEvent(getNiEvents().onColorFrame, pixels[0]); //TODO send id
+
 	return openni::STATUS_OK;
 }
 
 void ofxColorStream::draw()
 {
-	texture.loadData(*pixels[1]);
+	texture.loadData(*getPixels());
 	texture.draw(0,0);
 }
 

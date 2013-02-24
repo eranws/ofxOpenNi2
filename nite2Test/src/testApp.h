@@ -10,5 +10,8 @@ class testApp : public ofBaseApp{
 
 
 		void onDepthFrame( ofPtr<ofShortPixels>& frame);
+		void onColorFrame( ofPtr<ofPixels>& frame);
+		
+
 
 };

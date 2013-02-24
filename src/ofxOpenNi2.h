@@ -38,4 +38,10 @@ namespace ofxNi
 	void registerDepthFrameEvents(ListenerClass * listener){
 		ofAddListener(getNiEvents().onDepthFrame, listener, &ListenerClass::onDepthFrame);
 	}
+
+	template<class ListenerClass>
+	void registerColorFrameEvents(ListenerClass * listener){
+		ofAddListener(getNiEvents().onColorFrame, listener, &ListenerClass::onColorFrame);
+	}
+
 };
