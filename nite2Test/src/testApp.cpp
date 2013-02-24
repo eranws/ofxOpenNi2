@@ -1,10 +1,10 @@
 #include "testApp.h"
-#include "ofxOpenNi2.h"
 
 void testApp::setup(){
 	ofxNi::Server::setup();
-	ofxNi::registerDepthFrameEvents(this);
-	ofxNi::registerColorFrameEvents(this);
+	//ofxNi::registerDepthFrameEvents(this);
+	//ofxNi::registerColorFrameEvents(this);
+	ofxNi::registerDeviceEvents(this);
 }
 
 void testApp::draw(){
@@ -20,4 +20,11 @@ void testApp::onDepthFrame( ofPtr<ofShortPixels>& frame )
 void testApp::onColorFrame( ofPtr<ofPixels>& frame )
 {
 	cout << frame->getHeight() << "?" << endl;
+}
+
+void testApp::onDeviceUpdate( DeviceData& dd)
+{
+	cout << "DD: " << dd.colorFrame->getWidth() << "!" << endl;
+	cout << "DD: " << dd.depthFrame->getHeight() << "?" << endl;
+	
 }

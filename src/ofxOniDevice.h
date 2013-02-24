@@ -3,13 +3,14 @@
 
 #include "ofxDepthStream.h"
 #include "ofxColorStream.h"
+#include "ofThread.h"
 
 namespace openni
 {
 	class Device;
 }
 
-class ofxOniDevice
+class ofxOniDevice : public ofThread
 {
 
 public:
@@ -25,11 +26,14 @@ public:
 	void setRegistration( bool b ); //TODO: access via settings object
 	void setStreamSync( bool b );
 
+
 	//TODO: SensorMap, template/inheritance
 	ofxDepthStream depthStream;
 	ofxColorStream colorStream;
 
 protected:
 	ofPtr<openni::Device> device;
+	virtual void threadedFunction();
+
 };
 

@@ -2,6 +2,7 @@
 #include "OpenNI.h"
 #include "ofLog.h"
 #include "ofUtils.h"
+#include "NiEvents.h"
 
 void ofxOniDevice::setup(const char* uri)
 {
@@ -19,13 +20,14 @@ void ofxOniDevice::setup(const char* uri)
 	colorStream.setup(device);
 
 	//isFile ? don't start
-
-	depthStream.startThread(false);
-	colorStream.startThread(false);
+	startThread(false);
 }
 
 void ofxOniDevice::exit()
 {
+	stopThread();
+	waitForThread();
+
 	//TODO: Dtor
 	depthStream.exit();
 	colorStream.exit();
@@ -60,5 +62,21 @@ void ofxOniDevice::draw()
 	depthStream.draw();
 	ofTranslate(depthStream.getPixels()->getWidth(), 0);
 	colorStream.draw();
+}
+
+void ofxOniDevice::threadedFunction()
+{
+	while (isThreadRunning())
+	{
+		depthStream.readFrame();
+		colorStream.readFrame();
+		
+
+		DeviceData dd;
+		dd.depthFrame = depthStream.getPixels();
+		dd.colorFrame = colorStream.getPixels();
+		
+		ofNotifyEvent(getNiEvents().onDeviceUpdate, dd); //TODO send id
+	}
 }
 

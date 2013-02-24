@@ -28,13 +28,18 @@ public:
 	bool isLost() {	return status == lost;}
 };
 
-
+struct DeviceData
+{
+	ofPtr<ofShortPixels> depthFrame;
+	ofPtr<ofPixels> colorFrame;
+};
 
 class NiEvents{
 public:
 	ofEvent<TrackedPoint> handUpdate;
 	ofEvent<ofPtr<ofShortPixels> > onDepthFrame;
 	ofEvent<ofPtr<ofPixels> > onColorFrame;
+	ofEvent<DeviceData> onDeviceUpdate;
 
 	//TODO: more events here...
 };

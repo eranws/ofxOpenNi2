@@ -44,4 +44,11 @@ namespace ofxNi
 		ofAddListener(getNiEvents().onColorFrame, listener, &ListenerClass::onColorFrame);
 	}
 
+	template<class ListenerClass>
+	void registerDeviceEvents(ListenerClass * listener){
+		ofAddListener(getNiEvents().onDeviceUpdate, listener, &ListenerClass::onDeviceUpdate);
+	}
+
+
+
 };
