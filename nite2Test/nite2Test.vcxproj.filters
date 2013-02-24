@@ -22,6 +22,9 @@
     <ClCompile Include="..\src\ofxDepthStream.cpp">
       <Filter>ofxOpenNi2</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\NiEvents.cpp">
+      <Filter>ofxOpenNi2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -174,6 +177,9 @@
       <Filter>ofxOpenNi2</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ofxDepthStream.h">
+      <Filter>ofxOpenNi2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\NiEvents.h">
       <Filter>ofxOpenNi2</Filter>
     </ClInclude>
   </ItemGroup>

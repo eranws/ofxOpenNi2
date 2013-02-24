@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofxOniDevice.h"
+#include "NiEvents.h"
 
 namespace ofxNi
 {
@@ -17,7 +18,6 @@ namespace ofxNi
 	{
 	public:
 		static void setup(ServerOptions = defaultOptions);
-		static void update();
 		static void draw();
 
 
@@ -33,4 +33,9 @@ namespace ofxNi
 		Server&operator=(const Server &);
 	};
 
+
+	template<class ListenerClass>
+	void registerDepthFrameEvents(ListenerClass * listener){
+		ofAddListener(getNiEvents().onDepthFrame, listener, &ListenerClass::onDepthFrame);
+	}
 };

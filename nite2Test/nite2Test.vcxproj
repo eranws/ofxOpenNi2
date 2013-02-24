@@ -105,6 +105,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\NiEvents.cpp" />
     <ClCompile Include="..\src\ofxColorStream.cpp" />
     <ClCompile Include="..\src\ofxDepthStream.cpp" />
     <ClCompile Include="..\src\ofxOniDevice.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWaveform.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidget.h" />
     <ClInclude Include="..\..\..\addons\ofxUI\src\ofxUIWidgetWithLabel.h" />
+    <ClInclude Include="..\src\NiEvents.h" />
     <ClInclude Include="..\src\ofxColorStream.h" />
     <ClInclude Include="..\src\ofxDepthStream.h" />
     <ClInclude Include="..\src\ofxOniDevice.h" />

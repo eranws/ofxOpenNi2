@@ -1,6 +1,6 @@
 #include "ofxDepthStream.h"
 #include "OpenNI.h"
-
+#include "NiEvents.h"
 
 void ofxDepthStream::setup(ofPtr<openni::Device> device, bool isVerbose)
 {
@@ -104,6 +104,8 @@ int ofxDepthStream::readFrame()
 	pixels[1]->setFromPixels((const unsigned short*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_GRAYSCALE);
 
 	swap(pixels[0], pixels[1]);
+
+	ofNotifyEvent(getNiEvents().onDepthFrame, pixels[0]); //TODO send id
 
 	return openni::STATUS_OK;
 }

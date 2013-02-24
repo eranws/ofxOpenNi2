@@ -7,4 +7,8 @@ class testApp : public ofBaseApp{
 	public:
 		void setup();
 		void draw();
+
+
+		void onDepthFrame( ofPtr<ofShortPixels>& frame);
+
 };
