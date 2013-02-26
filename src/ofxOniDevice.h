@@ -22,18 +22,24 @@ public:
 	bool isValid();
 
 	ofPtr<openni::Device> getDevice() const { return device; }
+	const ofxDepthStream& getDepthStream() const { return depthStream; }
+	const ofxColorStream& getColorStream() const { return colorStream; }
 	
 	void setRegistration( bool b ); //TODO: access via settings object
 	void setStreamSync( bool b );
 
-
+	template<class ListenerClass>
+	void addListener(ListenerClass * listener){
+		ofAddListener(getNiEvents().onDeviceUpdate, listener, &ListenerClass::onDeviceUpdate);
+	}
 	//TODO: SensorMap, template/inheritance
-	ofxDepthStream depthStream;
-	ofxColorStream colorStream;
-
+	
 protected:
 	ofPtr<openni::Device> device;
 	virtual void threadedFunction();
+
+	ofxDepthStream depthStream;
+	ofxColorStream colorStream;
 
 };
 

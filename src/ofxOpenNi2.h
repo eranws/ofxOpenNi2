@@ -18,11 +18,13 @@ namespace ofxNi
 	{
 	public:
 		static void setup(ServerOptions = defaultOptions);
-		static void draw();
-
-
 		static ofPtr<ofxOniDevice> open(std::string uri);
-		
+
+		static void draw();
+		//const ofPtr<ofxOniDevice> getDevice(std::string uri) const;
+		static const ofPtr<ofxOniDevice> getDevice(int index = 0);
+
+
 		static DeviceMap devices;
 		static ServerOptions defaultOptions;
 
@@ -44,10 +46,7 @@ namespace ofxNi
 		ofAddListener(getNiEvents().onColorFrame, listener, &ListenerClass::onColorFrame);
 	}
 
-	template<class ListenerClass>
-	void registerDeviceEvents(ListenerClass * listener){
-		ofAddListener(getNiEvents().onDeviceUpdate, listener, &ListenerClass::onDeviceUpdate);
-	}
+	
 
 
 

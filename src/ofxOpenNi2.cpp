@@ -95,6 +95,11 @@ namespace ofxNi
 
 	Server::~Server(void)
 	{
+		
+		for(DeviceMap::iterator it = devices.begin(); it != devices.end(); it++)
+		{
+			it->second->exit();
+		}
 		openni::OpenNI::shutdown();
 	}
 
@@ -139,9 +144,21 @@ namespace ofxNi
 		for(DeviceMap::iterator it = devices.begin(); it != devices.end(); it++)
 		{
 			it->second->draw();
-			ofTranslate(0, it->second->depthStream.getPixels()->getHeight(),0); 
+			ofTranslate(0, it->second->getDepthStream().getPixels()->getHeight(),0); 
 		}
 		ofPopMatrix();
+	}
+
+	const ofPtr<ofxOniDevice> Server::getDevice( int index /*= 0*/ )
+	{
+		assert(index >= 0 && index < devices.size());
+		DeviceMap::const_iterator it = devices.cbegin();
+		for (int i = 0; i < index; i++)
+		{
+			it++;
+		}
+
+		return it->second;
 	}
 
 }
