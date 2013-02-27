@@ -4,6 +4,7 @@
 #include "ofxDepthStream.h"
 #include "ofxColorStream.h"
 #include "ofThread.h"
+#include "ofxRecorder.h"
 
 namespace openni
 {
@@ -41,12 +42,29 @@ public:
 	}
 	//TODO: SensorMap, template/inheritance
 	
+	void startRecording(string recordingFilename) 
+	{
+		recorder.start(recordingFilename);
+	}
+
+
+	bool isRecording() 
+	{
+		return recorder.isRecording();
+	}
+
+
+	void stopRecording() 
+	{
+		recorder.stop();
+	}
+
 protected:
 	ofPtr<openni::Device> device;
 	virtual void threadedFunction();
 
 	ofxDepthStream depthStream;
 	ofxColorStream colorStream;
-
+	ofxRecorder recorder;
 };
 

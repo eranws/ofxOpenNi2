@@ -1,6 +1,6 @@
 #pragma once
-#include "ofPixels.h"
 #include <vector>
+#include "ofTypes.h"
 
 namespace openni
 {
@@ -9,25 +9,27 @@ namespace openni
 	class Recorder;
 }
 
+class ofxOniDevice;
 class ofxRecorder
 {
 
 public:
 
-	void setup(ofPtr<openni::VideoStream> stream = ofPtr<openni::VideoStream>());
+	//void setup(ofPtr<openni::VideoStream> stream = ofPtr<openni::VideoStream>());
+	void setup(const ofxOniDevice& device);
 
-	void addStream(ofPtr<openni::VideoStream> stream);
 	void start(string filename);
 	void stop();
 
 	void exit();
 
-	bool IsRecording() const {return _isRecording;}
+	bool isRecording() const {return _isRecording;}
 
 	//ofPtr<openni::Recorder> getRecorder() const { return recorder; }
 	
 protected:
 	
+	void addStream(ofPtr<openni::VideoStream> stream);
 	std::vector<ofPtr<openni::VideoStream>> _streams; //make a list?
 	ofPtr<openni::Recorder> recorder;
 
