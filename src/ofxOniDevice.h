@@ -29,8 +29,15 @@ public:
 	void setStreamSync( bool b );
 
 	template<class ListenerClass>
-	void addListener(ListenerClass * listener){
+	void addListener(ListenerClass * listener)
+	{
 		ofAddListener(getNiEvents().onDeviceUpdate, listener, &ListenerClass::onDeviceUpdate);
+	}
+	
+	template<class ListenerClass>
+	void removeListener(ListenerClass * listener)
+	{
+		ofRemoveListener(getNiEvents().onDeviceUpdate, listener, &ListenerClass::onDeviceUpdate);
 	}
 	//TODO: SensorMap, template/inheritance
 	
