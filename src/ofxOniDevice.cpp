@@ -71,9 +71,9 @@ void ofxOniDevice::threadedFunction()
 	{
 		depthStream.readFrame();
 		colorStream.readFrame();
-		
 
 		DeviceData dd;
+		dd.depthTimestamp = depthStream.getTimestamp();
 		dd.depthFrame = depthStream.getPixels();
 		dd.colorFrame = colorStream.getPixels();
 		

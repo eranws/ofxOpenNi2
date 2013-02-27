@@ -84,6 +84,7 @@ int ofxDepthStream::readFrame()
 {
 	openni::VideoFrameRef frame;
 	openni::Status rc;
+	
 	rc = stream->readFrame(&frame);
 	if (rc != openni::STATUS_OK)
 	{
@@ -101,8 +102,9 @@ int ofxDepthStream::readFrame()
 	//int middleIndex = (frame.getHeight()+1)*frame.getWidth()/2;
 	//printf("[%08llu] %8d fps:%d\n", (long long)frame.getTimestamp(), pDepth[middleIndex], stream->getVideoMode().getFps());
 
+	currentTimestamp = frame.getTimestamp();
 	pixels[1]->setFromPixels((const unsigned short*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_GRAYSCALE);
-
+	
 	swap(pixels[0], pixels[1]);
 
 	ofNotifyEvent(getNiEvents().onDepthFrame, pixels[0]); //TODO send id

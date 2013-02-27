@@ -21,6 +21,7 @@ public:
 	ofPtr<openni::VideoStream> getStream() const { return stream; }
 	bool isValid();
 
+	uint64_t getTimestamp() { return currentTimestamp; }
 	ofPtr<ofShortPixels> getPixels() const { return pixels[0]; }
 
 	int readFrame();
@@ -30,6 +31,7 @@ public:
 protected:
 	ofPtr<ofShortPixels> pixels[2];
 	ofTexture texture;
+	uint64_t currentTimestamp;
 
 	virtual void threadedFunction();
 
@@ -37,6 +39,4 @@ protected:
 	void allocateBuffers();
 	ofPtr<openni::Device> device;
 	ofPtr<openni::VideoStream> stream;
-	
-
 };
