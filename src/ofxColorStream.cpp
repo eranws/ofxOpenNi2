@@ -80,7 +80,8 @@ int ofxColorStream::readFrame()
 	//printf("[%08llu] %8d fps:%d\n", (long long)frame.getTimestamp(), pcolor[middleIndex].r, stream->getVideoMode().getFps());
 
 	pixels[1]->setFromPixels((const unsigned char*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_COLOR);
-
+	frameIndex = frame.getFrameIndex();
+	timestamp = frame.getTimestamp();
 	swap(pixels[0], pixels[1]);
 
 	

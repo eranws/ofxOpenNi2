@@ -104,7 +104,9 @@ int ofxDepthStream::readFrame()
 
 	currentTimestamp = frame.getTimestamp();
 	pixels[1]->setFromPixels((const unsigned short*)frame.getData(), pixels[1]->getWidth(), pixels[1]->getHeight(), OF_IMAGE_GRAYSCALE);
-	
+
+	frameIndex = frame.getFrameIndex();
+	timestamp = frame.getTimestamp();
 	swap(pixels[0], pixels[1]);
 
 	ofNotifyEvent(getNiEvents().onDepthFrame, pixels[0]); //TODO send id

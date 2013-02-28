@@ -23,12 +23,16 @@ public:
 	
 	int readFrame();
 	bool isValid();
+	int getFrameIndex() const { return frameIndex; }
+	uint64_t getTimestamp() const { return timestamp; }
 
 	const ofPtr<ofPixels> getPixels() const { return pixels[0]; }
 
 protected:
 	ofPtr<ofPixels> pixels[2];
 	ofTexture texture;
+	int frameIndex;
+	uint64_t timestamp;
 	
 	virtual void threadedFunction();
 	void allocateBuffers();

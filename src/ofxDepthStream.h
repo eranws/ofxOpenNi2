@@ -27,6 +27,8 @@ public:
 	int readFrame();
 
 	ofVec3f cameraToWorld(ofVec2f p); //Depth Camera?
+	int getFrameIndex() const { return frameIndex; }
+	uint64_t getTimestamp() const { return timestamp; }
 
 protected:
 	ofPtr<ofShortPixels> pixels[2];
@@ -34,8 +36,8 @@ protected:
 	uint64_t currentTimestamp;
 
 	virtual void threadedFunction();
-
-
+	int frameIndex;
+	uint64_t timestamp;
 	void allocateBuffers();
 	ofPtr<openni::Device> device;
 	ofPtr<openni::VideoStream> stream;

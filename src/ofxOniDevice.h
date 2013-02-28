@@ -44,7 +44,7 @@ public:
 	
 	void startRecording(string recordingFilename) 
 	{
-		recorder.start(recordingFilename);
+		if (!isRecording()) recorder.start(recordingFilename);
 	}
 
 
@@ -56,7 +56,7 @@ public:
 
 	void stopRecording() 
 	{
-		recorder.stop();
+		if (isRecording()) recorder.stop();
 	}
 
 protected:

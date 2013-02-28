@@ -30,6 +30,7 @@ public:
 
 struct DeviceData
 {
+	int depthFrameIndex;
 	uint64_t depthTimestamp;
 	ofPtr<ofShortPixels> depthFrame;
 	ofPtr<ofPixels> colorFrame;

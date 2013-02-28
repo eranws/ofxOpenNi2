@@ -73,10 +73,11 @@ void ofxOniDevice::threadedFunction()
 		colorStream.readFrame();
 
 		DeviceData dd;
+		dd.depthFrameIndex = depthStream.getFrameIndex();
 		dd.depthTimestamp = depthStream.getTimestamp();
+
 		dd.depthFrame = depthStream.getPixels();
 		dd.colorFrame = colorStream.getPixels();
-		
 		ofNotifyEvent(getNiEvents().onDeviceUpdate, dd); //TODO send id
 	}
 }
