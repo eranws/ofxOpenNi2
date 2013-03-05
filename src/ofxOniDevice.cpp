@@ -50,7 +50,7 @@ void ofxOniDevice::setRegistration( bool b )
 
 bool ofxOniDevice::isValid()
 {
-	return (device.use_count() > 0 && device->isValid());
+	return (this != 0 && device.use_count() > 0 && device->isValid());
 }
 
 void ofxOniDevice::setStreamSync( bool b )

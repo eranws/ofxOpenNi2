@@ -18,11 +18,11 @@ namespace ofxNi
 	{
 	public:
 		static void setup(ServerOptions = defaultOptions);
-		static ofPtr<ofxOniDevice> open(std::string uri);
 
 		static void draw();
-		//const ofPtr<ofxOniDevice> getDevice(std::string uri) const;
+		
 		static const ofPtr<ofxOniDevice> getDevice(int index = 0);
+		static ofPtr<ofxOniDevice> open(std::string uri);
 
 
 		static DeviceMap devices;

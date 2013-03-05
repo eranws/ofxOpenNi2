@@ -151,14 +151,33 @@ namespace ofxNi
 
 	const ofPtr<ofxOniDevice> Server::getDevice( int index /*= 0*/ )
 	{
-		assert(index >= 0 && index < devices.size());
-		DeviceMap::const_iterator it = devices.cbegin();
-		for (int i = 0; i < index; i++)
+		ofPtr<ofxOniDevice> res;
+		if (index >= 0 && index < devices.size())
 		{
-			it++;
+			DeviceMap::const_iterator it = devices.cbegin();
+			for (int i = 0; i < index; i++)
+			{
+				it++;
+			}
+			res = it->second;
 		}
+		return res;
+	}
 
-		return it->second;
+	ofPtr<ofxOniDevice> Server::open( std::string uri )
+	{
+		ofPtr<ofxOniDevice> res;
+		openni::Device device;
+		Status rc = device.open(uri.c_str());
+		if (rc == STATUS_OK)
+		{
+			res = ofPtr<ofxOniDevice>(new ofxOniDevice);//ofxOniDevice();
+		}
+		else
+		{
+			throw ("open failed\n%s\n", openni::OpenNI::getExtendedError());
+		}
+		return res;
 	}
 
 }
