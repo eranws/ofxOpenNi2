@@ -7,6 +7,7 @@ void ofxRecorder::setup(const ofxOniDevice& device)
 {
 	recorder = ofPtr<openni::Recorder>(new openni::Recorder);
 	_isRecording = false;
+	allowLossyCompression = false;
 
 	addStream(device.getColorStream().getStream());
 	addStream(device.getDepthStream().getStream());
@@ -17,7 +18,7 @@ void ofxRecorder::start(string filename)
 	recorder->create(filename.append(".oni").c_str()); 
 	for (int i = 0; i < _streams.size(); i++)
 	{
-		recorder->attach(*_streams[i], true);
+		recorder->attach(*_streams[i], allowLossyCompression);
 	}
 	openni::Status rc = recorder->start();
 	if (rc == openni::STATUS_OK)

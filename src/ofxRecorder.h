@@ -34,5 +34,6 @@ protected:
 	ofPtr<openni::Recorder> recorder;
 
 	bool _isRecording;
+	bool allowLossyCompression;
 
 };
