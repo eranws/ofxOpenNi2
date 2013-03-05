@@ -166,17 +166,8 @@ namespace ofxNi
 
 	ofPtr<ofxOniDevice> Server::open( std::string uri )
 	{
-		ofPtr<ofxOniDevice> res;
-		openni::Device device;
-		Status rc = device.open(uri.c_str());
-		if (rc == STATUS_OK)
-		{
-			res = ofPtr<ofxOniDevice>(new ofxOniDevice);//ofxOniDevice();
-		}
-		else
-		{
-			throw ("open failed\n%s\n", openni::OpenNI::getExtendedError());
-		}
+		ofPtr<ofxOniDevice> res = ofPtr<ofxOniDevice>(new ofxOniDevice);//ofxOniDevice();
+		res->setup(uri.c_str());
 		return res;
 	}
 

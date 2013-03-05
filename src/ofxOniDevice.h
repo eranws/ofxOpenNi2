@@ -15,7 +15,6 @@ class ofxOniDevice : public ofThread
 {
 
 public:
-
 	void setup(const char* uri = NULL);
 	void draw();
 	void exit();
@@ -58,6 +57,8 @@ public:
 	{
 		if (isRecording()) recorder.stop();
 	}
+
+	~ofxOniDevice();
 
 protected:
 	ofPtr<openni::Device> device;

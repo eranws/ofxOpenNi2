@@ -29,7 +29,6 @@ void ofxOniDevice::exit()
 	stopThread();
 	waitForThread();
 
-	//TODO: Dtor
 	depthStream.exit();
 	colorStream.exit();
 	device->close();
@@ -80,5 +79,10 @@ void ofxOniDevice::threadedFunction()
 		dd.colorFrame = colorStream.getPixels();
 		ofNotifyEvent(getNiEvents().onDeviceUpdate, dd); //TODO send id
 	}
+}
+
+ofxOniDevice::~ofxOniDevice()
+{
+	this->exit();
 }
 
