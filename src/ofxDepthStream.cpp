@@ -142,10 +142,10 @@ ofTexture depthTextureToColor(const ofShortPixels& raw)
 }
 
 
-void ofxDepthStream::draw()
+void ofxDepthStream::draw() const
 {
 	ofPtr<ofShortPixels> depthRawPixels = getPixels();
-	texture = depthTextureToColor(*depthRawPixels);
-	texture.draw(0, 0);
+	ofTexture textured = depthTextureToColor(*depthRawPixels);
+	textured.draw(0, 0);
 }
 
