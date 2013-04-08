@@ -19,7 +19,7 @@ void ofxOniDevice::setup(const char* uri)
 	depthStream.setup(device);
 	colorStream.setup(device);
 
-	recorder.setup(*this);
+	recorder.setup();
 	//isFile ? don't start
 	startThread(false);
 }

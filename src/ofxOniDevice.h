@@ -41,9 +41,13 @@ public:
 	}
 	//TODO: SensorMap, template/inheritance
 	
-	void startRecording(string recordingFilename) 
+	void startRecording(string recordingFilename, RecordStreams recordStreams = RECORD_BOTH) 
 	{
-		if (!isRecording()) recorder.start(recordingFilename);
+		if (!isRecording())
+		{
+
+			recorder.start(recordingFilename, *this, recordStreams);
+		}
 	}
 
 
